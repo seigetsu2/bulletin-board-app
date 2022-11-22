@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { ThreadList } from './ThreadList';
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
@@ -9,7 +10,10 @@ function App() {
         <span className='AppTitle'>掲示板</span>
         <a href='' className='makeThread'>スレッドを立てる</a>
       </header>
-      <ThreadList />
+      <Routes>
+        <Route path='/' element={<ThreadList />} />
+        <Route path='*' element={<ThreadList />} />
+      </Routes>
     </div>
   );
 }
