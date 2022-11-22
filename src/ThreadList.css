@@ -1,0 +1,9 @@
+.threadList--table {
+    margin: auto;
+    border-collapse: collapse;
+    font-size: larger;
+}
+
+td {
+    border: 1px solid black;
+}

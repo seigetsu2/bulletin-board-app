@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { ThreadList } from './ThreadList';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <span className='AppTitle'>掲示板</span>
         <a href='' className='makeThread'>スレッドを立てる</a>
       </header>
+      <ThreadList />
     </div>
   );
 }
