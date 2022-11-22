@@ -4,6 +4,6 @@
     font-size: larger;
 }
 
-td {
+.threadList--td {
     border: 1px solid black;
 }

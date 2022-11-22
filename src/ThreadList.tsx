@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import './ThreadList.css';
+import ThreadModule from './ThreadList.module.css';
 
 type thread = {
     id: string,
@@ -17,15 +17,13 @@ export const ThreadList = () => {
             .then(data => setThreadList(data));
     }, []);
     return (
-        <div className='threadList'>
-            <table className='threadList--table'>
-                <thead className='threadList--thead'>
-                    <tr><th>新着スレッド</th></tr>
-                </thead>
-                <tbody className='threadList--tbody'>
-                    {threadList.map(thread => <tr key={thread.id}><td>{thread.title}</td></tr>)}
-                </tbody>
-            </table>
-        </div>
+        <table className={ThreadModule['threadList--table']}>
+            <thead>
+                <tr><th>新着スレッド</th></tr>
+            </thead>
+            <tbody>
+                {threadList.map(thread => <tr key={thread.id}><td className={ThreadModule['threadList--td']}>{thread.title}</td></tr>)}
+            </tbody>
+        </table>
     );
 }

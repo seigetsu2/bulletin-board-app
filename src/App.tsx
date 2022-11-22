@@ -1,14 +1,14 @@
 import React from 'react';
-import './App.css';
+import AppModule from './App.module.css';
 import { ThreadList } from './ThreadList';
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <span className='AppTitle'>掲示板</span>
-        <a href='' className='makeThread'>スレッドを立てる</a>
+    <div className={AppModule.App}>
+      <header className={AppModule['App-header']}>
+        <span>掲示板</span>
+        <a href=''>スレッドを立てる</a>
       </header>
       <Routes>
         <Route path='/' element={<ThreadList />} />
