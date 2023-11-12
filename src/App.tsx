@@ -3,8 +3,11 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { AppHeader } from "./pages/AppHeader";
 import { ThreadListPage } from "./pages/ThreadListPage/ThreadListPage";
+import { CreateThreadPage } from "./pages/CreateThreadPage/CreateThreadPage";
+import { useThreadList } from "./hooks/useThreadList";
 
 function App() {
+  const [threadList, refreshThreadList] = useThreadList();
   return (
     <div className="App">
       <div className="Header">
@@ -12,7 +15,14 @@ function App() {
       </div>
       <div className="Page">
         <Routes>
-          <Route path="/" element={<ThreadListPage />} />
+          <Route
+            path="/"
+            element={<ThreadListPage threadList={threadList} />}
+          />
+          <Route
+            path="/thread/new"
+            element={<CreateThreadPage refreshThreadList={refreshThreadList} />}
+          />
         </Routes>
       </div>
     </div>
