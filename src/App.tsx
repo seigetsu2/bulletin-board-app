@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { AppHeader } from "./pages/AppHeader";
+import { ThreadListPage } from "./pages/ThreadListPage/ThreadListPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Header">
+        <AppHeader />
+      </div>
+      <div className="Page">
+        <Routes>
+          <Route path="/" element={<ThreadListPage />} />
+        </Routes>
+      </div>
     </div>
   );
 }
