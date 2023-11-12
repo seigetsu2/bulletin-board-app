@@ -3,6 +3,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { AppHeader } from "./pages/AppHeader";
 import { ThreadListPage } from "./pages/ThreadListPage/ThreadListPage";
+import { CreateThreadPage } from "./pages/CreateThreadPage/CreateThreadPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="Page">
         <Routes>
           <Route path="/" element={<ThreadListPage />} />
+          <Route path="/thread/new" element={<CreateThreadPage />} />
         </Routes>
       </div>
     </div>
