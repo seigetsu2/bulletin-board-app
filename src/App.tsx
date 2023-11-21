@@ -5,6 +5,7 @@ import { AppHeader } from "./pages/AppHeader";
 import { ThreadListPage } from "./pages/ThreadListPage/ThreadListPage";
 import { CreateThreadPage } from "./pages/CreateThreadPage/CreateThreadPage";
 import { useThreadList } from "./hooks/useThreadList";
+import { PostListPage } from "./pages/PostListPage/PostListPage";
 
 function App() {
   const [threadList, refreshThreadList] = useThreadList();
@@ -23,6 +24,7 @@ function App() {
             path="/thread/new"
             element={<CreateThreadPage refreshThreadList={refreshThreadList} />}
           />
+          <Route path="/thread/:threadId" element={<PostListPage />} />
         </Routes>
       </div>
     </div>
