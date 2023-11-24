@@ -1,9 +1,9 @@
 import { PostList } from "../../components/PostList/PostList";
 import { usePostList } from "../../hooks/usePostList";
 import { useLocation, useParams } from "react-router-dom";
-import { TextBox } from "../../components/TextBox/TextBox";
 import { Button } from "../../components/Button/Button";
 import { useState } from "react";
+import styles from "./PostListPage.module.css";
 export const PostListPage = () => {
   const { threadId } = useParams<{ threadId: string }>();
   const [postList, refreshPostList] = usePostList(threadId);
@@ -11,6 +11,7 @@ export const PostListPage = () => {
   const location = useLocation();
   const title = location.state as string;
   async function postCreateNewPost(post: string) {
+    if (!post) return;
     await fetch(
       "https://railway.bulletinboard.techtrain.dev/threads/" +
         threadId +
@@ -29,17 +30,26 @@ export const PostListPage = () => {
     setNewPost("");
   }
   return (
-    <div>
-      <div>{title}</div>
-      <div>
-        <PostList postList={postList} />
+    <div className={styles.page}>
+      <div className={styles.content}>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.postList}>
+          <div>
+            <PostList postList={postList} />
+          </div>
+        </div>
+        <div className={styles.newPost}>
+          <textarea
+            className={styles.textBox}
+            placeholder="投稿しよう!"
+            onChange={(e) => setNewPost(e.target.value)}
+            value={newPost}
+          />
+          <div className={styles.button}>
+            <Button text="投稿" onClick={() => postCreateNewPost(newPost)} />
+          </div>
+        </div>
       </div>
-      <TextBox
-        placeholder="投稿しよう!"
-        onTextChange={(text) => setNewPost(text)}
-        value={newPost}
-      />
-      <Button text="投稿" onClick={() => postCreateNewPost(newPost)} />
     </div>
   );
 };
